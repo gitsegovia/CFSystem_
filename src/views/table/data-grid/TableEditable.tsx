@@ -1,68 +1,65 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import { DataGrid, GridColDef } from '@mui/x-data-grid'
-
-// ** Data Import
-import { rows } from 'src/@fake-db/table/static-data'
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardHeader from "@mui/material/CardHeader";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   {
     flex: 0.1,
-    field: 'id',
+    field: "id",
     minWidth: 80,
-    headerName: 'ID'
+    headerName: "ID",
   },
   {
     flex: 0.25,
     minWidth: 200,
     editable: true,
-    field: 'full_name',
-    headerName: 'Name'
+    field: "full_name",
+    headerName: "Name",
   },
   {
     flex: 0.25,
     minWidth: 230,
-    field: 'email',
+    field: "email",
     editable: true,
-    headerName: 'Email'
+    headerName: "Email",
   },
   {
     flex: 0.15,
-    type: 'date',
+    type: "date",
     minWidth: 130,
     editable: true,
-    headerName: 'Date',
-    field: 'start_date',
-    valueGetter: params => new Date(params.value)
+    headerName: "Date",
+    field: "start_date",
+    valueGetter: (params) => new Date(params.value),
   },
   {
     flex: 0.15,
     minWidth: 120,
     editable: true,
-    field: 'experience',
-    headerName: 'Experience'
+    field: "experience",
+    headerName: "Experience",
   },
   {
     flex: 0.1,
-    field: 'age',
+    field: "age",
     minWidth: 80,
-    type: 'number',
+    type: "number",
     editable: true,
-    headerName: 'Age'
-  }
-]
+    headerName: "Age",
+  },
+];
 
 const TableEditable = () => {
   return (
     <Card>
-      <CardHeader title='Editable' />
+      <CardHeader title="Editable" />
       <Box sx={{ height: 500 }}>
-        <DataGrid columns={columns} rows={rows.slice(0, 10)} />
+        <DataGrid columns={columns} rows={[]} />
       </Box>
     </Card>
-  )
-}
+  );
+};
 
-export default TableEditable
+export default TableEditable;

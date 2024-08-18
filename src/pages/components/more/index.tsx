@@ -16,7 +16,6 @@ import CardContent from '@mui/material/CardContent'
 import TableContainer from '@mui/material/TableContainer'
 
 // ** Data Imports
-import componentData from 'src/@fake-db/components/data'
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   textDecoration: 'none',
@@ -43,16 +42,7 @@ const Misc = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {componentData.map((data, index) => (
-                    <TableRow key={index} sx={{ '&:last-of-type .MuiTableCell-root ': { border: 0 } }}>
-                      <TableCell>{data.component}</TableCell>
-                      <TableCell>
-                        <LinkStyled href={data.link} target='_blank'>
-                          {data.link}
-                        </LinkStyled>
-                      </TableCell>
-                    </TableRow>
-                  ))}
+                  
                 </TableBody>
               </Table>
             </TableContainer>
