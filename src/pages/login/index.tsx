@@ -59,7 +59,7 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
 }));
 
 const schema = yup.object().shape({
-  email: yup.string().email().required(),
+  email: yup.string().email().required("El correo es requerido"),
   password: yup.string().required(),
 });
 
@@ -125,9 +125,6 @@ const LoginPage = () => {
               {themeConfig.templateName}
             </Typography>
           </Box>
-          <Box sx={{ mb: 6 }}>
-            <Typography variant="body2">Inicar sesión</Typography>
-          </Box>
           <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 20 }}>
             <FormControl fullWidth sx={{ mb: 4 }}>
               <Controller
@@ -135,7 +132,7 @@ const LoginPage = () => {
                 control={control}
                 rules={{ required: true }}
                 render={({ field: { value, onChange, onBlur } }) => (
-                  <TextField autoFocus label="Correo" value={value} onBlur={onBlur} onChange={onChange} error={Boolean(errors.email)} placeholder="admin@guarico.gob.ve" />
+                  <TextField label="Correo" value={value} onBlur={onBlur} onChange={onChange} error={Boolean(errors.email)} placeholder="admin@guarico.gob.ve" />
                 )}
               />
               {errors.email && <FormHelperText sx={{ color: "error.main" }}>{errors.email.message}</FormHelperText>}
