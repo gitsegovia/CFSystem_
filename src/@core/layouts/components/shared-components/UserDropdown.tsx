@@ -93,7 +93,7 @@ const UserDropdown = (props: Props) => {
           horizontal: "right",
         }}
       >
-        <Avatar alt="John Doe" onClick={handleDropdownOpen} sx={{ width: 40, height: 40 }} src="/images/avatars/1.png" />
+        <Avatar alt={user?.fullName ?? "Admin"} onClick={handleDropdownOpen} sx={{ width: 40, height: 40 }} src={user?.gender === "masculino" ? "/images/avatars/1.png" : "/images/avatars/8.png"} />
       </Badge>
       <Menu
         anchorEl={anchorEl}
