@@ -128,7 +128,7 @@ const VerticalNavHeader = (props: Props) => {
         userNavMenuBranding(props)
       ) : (
         <LinkStyled href="/">
-          <img src="/images/logos/logo.png" style={{ filter: "invert(9%) sepia(94%) saturate(7491%) hue-rotate(248deg) brightness(91%) contrast(145%)", width: "30%", marginRight: 10 }} />
+          <img src="/images/logos/logo.png" style={{ width: "30%", marginRight: 10 }} />
           <HeaderTitle variant="h6" sx={{ ...menuCollapsedStyles, ...(navCollapsed && !navHover ? {} : { ml: 2 }) }}>
             {themeConfig.templateName}
           </HeaderTitle>

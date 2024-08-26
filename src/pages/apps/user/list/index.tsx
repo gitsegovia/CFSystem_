@@ -285,7 +285,7 @@ const UserList = () => {
     <Grid container spacing={6}>
       <Grid item xs={12}>
         <Card>
-          <CardHeader title="Search Filters" sx={{ pb: 4, "& .MuiCardHeader-title": { letterSpacing: ".15px" } }} />
+          <CardHeader title="Lista de usuarios" sx={{ pb: 4, "& .MuiCardHeader-title": { letterSpacing: ".15px" } }} />
           <TableHeader value={value} handleFilter={handleFilter} toggle={toggleAddUserDrawer} />
           <DataGrid
             autoHeight
@@ -296,6 +296,15 @@ const UserList = () => {
             pageSizeOptions={[10, 25, 50]}
             paginationModel={paginationModel}
             onPaginationModelChange={setPaginationModel}
+            localeText={{
+              noRowsLabel: "No se encontraron registros",
+            }}
+            slotProps={{
+              pagination: {
+                labelRowsPerPage: "Filas por página",
+                labelDisplayedRows: ({ from, to, count }) => `${from}-${to} de ${count}`,
+              },
+            }}
             sx={{ "& .MuiDataGrid-columnHeaders": { borderRadius: 0 }, "& .MuiDataGrid-cell": { maxHeight: "75px !important" } }}
           />
         </Card>

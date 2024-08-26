@@ -103,7 +103,7 @@ const LoginPage = () => {
     auth.login({ email, password, rememberMe }, () => {
       setError("email", {
         type: "manual",
-        message: "Email or Password is invalid",
+        message: "Correo o contrasenya incorrectos",
       });
     });
   };
@@ -111,7 +111,7 @@ const LoginPage = () => {
   return (
     <Box className="content-center">
       <Card sx={{ zIndex: 1 }}>
-        <CardContent sx={{ padding: (theme) => `${theme.spacing(12, 9, 7)} !important` }}>
+        <CardContent sx={{ padding: (theme) => `${theme.spacing(4, 9)} !important` }}>
           <Box
             sx={{
               display: "flex",
@@ -120,8 +120,8 @@ const LoginPage = () => {
               flexDirection: "column",
             }}
           >
-            <img src="/images/logos/logo.png" style={{ width: "50%" }} />
-            <Typography variant="h6" sx={{ ml: 2, mt: 5, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
+            <img src="/images/logos/logo.png" style={{ width: "40%" }} />
+            <Typography variant="h6" sx={{ ml: 2, mt: 0, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
               {themeConfig.templateName}
             </Typography>
           </Box>
