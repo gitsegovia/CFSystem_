@@ -59,8 +59,8 @@ const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ t
 }));
 
 const schema = yup.object().shape({
-  email: yup.string().email().required("El correo es requerido"),
-  password: yup.string().required(),
+  email: yup.string().email("El correo no es valido").required("El correo es requerido"),
+  password: yup.string().required("La contraseña es requerida"),
 });
 
 const defaultValues = {
