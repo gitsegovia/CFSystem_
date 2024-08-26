@@ -315,6 +315,9 @@ const UserList = () => {
             columns={columns}
             disableRowSelectionOnClick
             hideFooterPagination={true}
+            localeText={{
+              noRowsLabel: "No hay registros disponibles",
+            }}
             sx={{ "& .MuiDataGrid-columnHeaders": { borderRadius: 0 }, "& .MuiDataGrid-cell": { maxHeight: "75px !important" } }}
           />
         </Card>

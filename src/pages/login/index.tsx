@@ -20,6 +20,8 @@ import { styled, useTheme } from "@mui/material/styles";
 import FormHelperText from "@mui/material/FormHelperText";
 import InputAdornment from "@mui/material/InputAdornment";
 import Typography, { TypographyProps } from "@mui/material/Typography";
+import MuiCard, { CardProps } from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import MuiFormControlLabel, { FormControlLabelProps } from "@mui/material/FormControlLabel";
 
 // ** Icon Imports
@@ -42,43 +44,11 @@ import themeConfig from "src/configs/themeConfig";
 import BlankLayout from "src/@core/layouts/BlankLayout";
 
 // ** Demo Imports
-import FooterIllustrationsV2 from "src/views/pages/auth/FooterIllustrationsV2";
+import FooterIllustrations from "src/views/pages/auth/FooterIllustrations";
 
 // ** Styled Components
-const LoginIllustrationWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  padding: theme.spacing(0),
-  height: "100%",
-  width: "100%",
-}));
-
-const LoginIllustration = styled("img")(({ theme }) => ({
-  width: "100%",
-  height: "100%",
-  opacity: "1",
-}));
-
-const RightWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  width: "100%",
-  [theme.breakpoints.up("md")]: {
-    maxWidth: 400,
-  },
-  [theme.breakpoints.up("lg")]: {
-    maxWidth: 450,
-  },
-}));
-
-const BoxWrapper = styled(Box)<BoxProps>(({ theme }) => ({
-  width: "100%",
-  [theme.breakpoints.down("md")]: {
-    maxWidth: 400,
-  },
-}));
-
-const TypographyStyled = styled(Typography)<TypographyProps>(({ theme }) => ({
-  fontWeight: 600,
-  letterSpacing: "0.18px",
-  marginBottom: theme.spacing(1.5),
-  [theme.breakpoints.down("md")]: { marginTop: theme.spacing(8) },
+const Card = styled(MuiCard)<CardProps>(({ theme }) => ({
+  [theme.breakpoints.up("sm")]: { width: "28rem" },
 }));
 
 const FormControlLabel = styled(MuiFormControlLabel)<FormControlLabelProps>(({ theme }) => ({
@@ -139,100 +109,83 @@ const LoginPage = () => {
   };
 
   return (
-    <Box className="content-right">
-      {!hidden ? (
-        <Box sx={{ flex: 1, display: "flex", position: "relative", alignItems: "center", justifyContent: "center" }}>
-          <LoginIllustrationWrapper>
-            <LoginIllustration alt="" src={`/images/logos/login.png`} />
-          </LoginIllustrationWrapper>
-        </Box>
-      ) : null}
-      <RightWrapper sx={skin === "bordered" && !hidden ? { borderLeft: `1px solid ${theme.palette.divider}` } : {}}>
-        <Box
-          sx={{
-            p: 7,
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "background.paper",
-          }}
-        >
-          <BoxWrapper>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-              }}
-            >
-              <img src="/images/logos/logo.png" style={{ filter: "invert(9%) sepia(94%) saturate(7491%) hue-rotate(248deg) brightness(91%) contrast(145%)", width: "50%" }} />
-              <Typography variant="h6" sx={{ ml: 2, mt: 5, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
-                {themeConfig.templateName}
-              </Typography>
-            </Box>
-            <Box sx={{ mb: 6 }}>
-              <Typography variant="body2">Inicar sesión</Typography>
-            </Box>
-            <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 20 }}>
-              <FormControl fullWidth sx={{ mb: 4 }}>
-                <Controller
-                  name="email"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { value, onChange, onBlur } }) => (
-                    <TextField autoFocus label="Correo" value={value} onBlur={onBlur} onChange={onChange} error={Boolean(errors.email)} placeholder="admin@materialize.com" />
-                  )}
-                />
-                {errors.email && <FormHelperText sx={{ color: "error.main" }}>{errors.email.message}</FormHelperText>}
-              </FormControl>
-              <FormControl fullWidth>
-                <InputLabel htmlFor="auth-login-v2-password" error={Boolean(errors.password)}>
-                  Contraseña
-                </InputLabel>
-                <Controller
-                  name="password"
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { value, onChange, onBlur } }) => (
-                    <OutlinedInput
-                      value={value}
-                      onBlur={onBlur}
-                      label="Contraseña"
-                      onChange={onChange}
-                      id="auth-login-v2-password"
-                      error={Boolean(errors.password)}
-                      type={showPassword ? "text" : "password"}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton edge="end" onMouseDown={(e) => e.preventDefault()} onClick={() => setShowPassword(!showPassword)}>
-                            <Icon icon={showPassword ? "mdi:eye-outline" : "mdi:eye-off-outline"} fontSize={20} />
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                    />
-                  )}
-                />
-                {errors.password && (
-                  <FormHelperText sx={{ color: "error.main" }} id="">
-                    {errors.password.message}
-                  </FormHelperText>
+    <Box className="content-center">
+      <Card sx={{ zIndex: 1 }}>
+        <CardContent sx={{ padding: (theme) => `${theme.spacing(12, 9, 7)} !important` }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <img src="/images/logos/logo.png" style={{ width: "50%" }} />
+            <Typography variant="h6" sx={{ ml: 2, mt: 5, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
+              {themeConfig.templateName}
+            </Typography>
+          </Box>
+          <Box sx={{ mb: 6 }}>
+            <Typography variant="body2">Inicar sesión</Typography>
+          </Box>
+          <form noValidate autoComplete="off" onSubmit={handleSubmit(onSubmit)} style={{ marginBottom: 20 }}>
+            <FormControl fullWidth sx={{ mb: 4 }}>
+              <Controller
+                name="email"
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <TextField autoFocus label="Correo" value={value} onBlur={onBlur} onChange={onChange} error={Boolean(errors.email)} placeholder="admin@guarico.gob.ve" />
                 )}
-              </FormControl>
-              <Box sx={{ mb: 4, display: "flex", alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
-                <FormControlLabel label="Recordar" control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} />
-                {/* <Typography variant="body2" component={Link} href="/forgot-password" sx={{ color: "primary.main", textDecoration: "none" }}>
+              />
+              {errors.email && <FormHelperText sx={{ color: "error.main" }}>{errors.email.message}</FormHelperText>}
+            </FormControl>
+            <FormControl fullWidth>
+              <InputLabel htmlFor="auth-login-v2-password" error={Boolean(errors.password)}>
+                Contraseña
+              </InputLabel>
+              <Controller
+                name="password"
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <OutlinedInput
+                    value={value}
+                    onBlur={onBlur}
+                    label="Contraseña"
+                    onChange={onChange}
+                    id="auth-login-v2-password"
+                    error={Boolean(errors.password)}
+                    type={showPassword ? "text" : "password"}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton edge="end" onMouseDown={(e) => e.preventDefault()} onClick={() => setShowPassword(!showPassword)}>
+                          <Icon icon={showPassword ? "mdi:eye-outline" : "mdi:eye-off-outline"} fontSize={20} />
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                  />
+                )}
+              />
+              {errors.password && (
+                <FormHelperText sx={{ color: "error.main" }} id="">
+                  {errors.password.message}
+                </FormHelperText>
+              )}
+            </FormControl>
+            <Box sx={{ mb: 4, display: "flex", alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
+              <FormControlLabel label="Recordar" control={<Checkbox checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />} />
+              {/* <Typography variant="body2" component={Link} href="/forgot-password" sx={{ color: "primary.main", textDecoration: "none" }}>
                                     Forgot Password?
                                 </Typography> */}
-              </Box>
-              <Button fullWidth size="large" type="submit" variant="contained" sx={{ mb: 7 }}>
-                Iniciar sesión
-              </Button>
-            </form>
-          </BoxWrapper>
-        </Box>
-      </RightWrapper>
+            </Box>
+            <Button fullWidth size="large" type="submit" variant="contained" sx={{ mb: 7 }}>
+              Iniciar sesión
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+      <FooterIllustrations />
     </Box>
   );
 };
