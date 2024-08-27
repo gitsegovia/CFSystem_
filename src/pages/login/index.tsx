@@ -74,7 +74,7 @@ interface FormData {
 }
 
 const LoginPage = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(true);
+  const [rememberMe, setRememberMe] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   // ** Hooks
@@ -121,7 +121,7 @@ const LoginPage = () => {
             }}
           >
             <img src="/images/logos/logo.png" style={{ width: "40%" }} />
-            <Typography variant="h6" sx={{ ml: 2, mt: 0, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
+            <Typography variant="h6" sx={{ ml: 2, mb: 4, lineHeight: 1, fontWeight: 700, fontSize: "1.8rem !important" }}>
               {themeConfig.templateName}
             </Typography>
           </Box>
